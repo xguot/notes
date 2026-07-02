@@ -1,0 +1,6 @@
+#+TITLE: notes
+
+#+begin_quote
+"What I cannot create, I do not understand." \\
+— Richard Feynman
+#+end_quote

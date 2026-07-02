@@ -1,0 +1,25 @@
+# OS / Editor junk
+.DS_Store
+.netrwhist
+*.swp
+*.swo
+*.spl
+*.sug
+.vim/undodir/
+
+# Emacs temp and backup files
+*~
+\#*\#
+.\#*
+
+# Org-mode export artifacts
+*.html
+*.tex
+*.pdf
+*.aux
+*.log
+*.out
+
+# OS generated files
+.DS_Store
+Thumbs.db
