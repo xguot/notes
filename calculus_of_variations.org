@@ -1,0 +1,55 @@
+#+TITLE: Calculus of Variations
+#+STARTUP: overview
+#+FILETAGS: :math:analysis:
+#+OPTIONS: ^:nil author:nil date:nil toc:nil num:nil
+
+* The Functional and its Variation
+Consider a functional $J[y]$ mapping a path $y(x)$ to a scalar,
+
+$$J[y] = \int _ {x_1} ^ {x_2} F(x, y, y') dx,$$
+
+subject to fixed boundary conditions $y(x_1) = y_1$ and $y(x_2) = y_2$.
+
+Introduce a one-parameter family of trial paths,
+
+$$y(x, \alpha) = y(x, 0) + \alpha \eta(x),$$
+
+where $y(x, 0)$ represents the true extremizing path.
+
+Because the endpoints are fixed, the arbitrary variation $\eta(x)$ must vanish identically at the boundaries,
+
+$$\eta(x_1) = 0, \quad \eta(x_2) = 0.$$
+
+* The Stationarity Condition
+Stationarity requires the first variation of $J$ to vanish at the true path,
+
+$$\left. \frac{dJ}{d\alpha} \right| _ {\alpha=0} = 0.$$
+
+Differentiating under the integral sign and applying the chain rule yields
+
+$$\frac{dJ}{d\alpha} = \int _ {x_1} ^ {x_2} \left( \frac{\partial F}{\partial y} \eta(x) + \frac{\partial F}{\partial y'} \eta'(x) \right) dx.$$
+
+Integrating the second term by parts and applying the vanishing boundary conditions gives
+
+$$\int _ {x_1} ^ {x_2} \frac{\partial F}{\partial y'} \eta'(x) dx = - \int _ {x_1} ^ {x_2} \frac{d}{dx} \left( \frac{\partial F}{\partial y'} \right) \eta(x) dx.$$
+
+Substituting this result back into the variation equation yields
+
+$$\left. \frac{dJ}{d\alpha} \right| _ {\alpha=0} = \int _ {x_1} ^ {x_2} \left[ \frac{\partial F}{\partial y} - \frac{d}{dx} \left( \frac{\partial F}{\partial y'} \right) \right] \eta(x) dx = 0.$$
+
+* The Fundamental Lemma
+By the fundamental lemma of the calculus of variations, if
+
+$$\int _ {x_1} ^ {x_2} M(x) \eta(x) dx = 0$$
+
+for all continuous functions $\eta(x)$ vanishing at the boundaries, then $M(x) = 0$ everywhere in the interval.
+
+If $M(x) > 0$ at some $x_0$, continuity guarantees a neighborhood where $M(x) > 0$.
+
+Choosing a positive bump function $\eta(x)$ localized to this neighborhood yields a strictly positive integral, contradicting the premise.
+
+Thus, $M(x) = 0$ identically.
+
+Applying this lemma to the stationarity condition yields the Euler-Lagrange equation,
+
+$$\boxed{ \frac{\partial F}{\partial y} - \frac{d}{dx} \left( \frac{\partial F}{\partial y'} \right) = 0 }.$$
