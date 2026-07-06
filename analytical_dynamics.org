@@ -1,0 +1,96 @@
+#+TITLE: Analytical Dynamics
+#+STARTUP: overview
+#+FILETAGS: :physics:classical_mechanics:
+#+OPTIONS: ^:nil author:nil date:nil toc:nil num:nil
+
+* D'Alembert's Principle and Virtual Work
+Consider a system of particles subject to a constraint surface defined by $f(x, y, t) = 0$.
+A physical differential representing actual motion evolves over time as
+
+$$df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy + \frac{\partial f}{\partial t} dt = 0.$$
+
+By freezing time ($\delta t = 0$), we define an infinitesimal virtual displacement $\delta \mathbf{r} _ i$ satisfying
+
+$$\frac{\partial f}{\partial x} \delta x + \frac{\partial f}{\partial y} \delta y = 0.$$
+
+The principle of virtual work dictates that the constraint forces $\mathbf{F} _ {ci}$ do no work,
+
+$$\sum _ i \mathbf{F} _ {ci} \cdot \delta \mathbf{r} _ i = 0.$$
+
+To distinguish this from physical work, consider a bead constrained to a track on a rotating wheel.
+For a real displacement $d\mathbf{r}$, the wheel rotates over time $dt$, allowing the moving track to perform physical work.
+For a virtual displacement $\delta\mathbf{r}$, the rotation is kinematically frozen ($\delta t = 0$), the track is instantaneously stationary, and its reactive force acts strictly normal to the virtual path.
+
+Introducing the applied forces $\mathbf{F} _ {ai}$ and the inertial response $\dot{\mathbf{p}} _ i$, D'Alembert's principle establishes the fundamental dynamical relation by equating the system to a state of dynamic equilibrium,
+
+$$\boxed{ \sum _ i (\mathbf{F} _ {ai} - \dot{\mathbf{p}} _ i) \cdot \delta \mathbf{r} _ i = 0 }.$$
+
+* The Lagrangian and Action
+To extract the kinetic structure, integrate D'Alembert's principle over time and apply integration by parts to the inertial term.
+The vanishing boundary conditions allow shifting the time derivative from the momentum to the variation, yielding
+
+$$-\int \dot{\mathbf{p}}_i \cdot \delta\mathbf{r}_i \, dt = \int \mathbf{p}_i \cdot \delta\dot{\mathbf{r}}_i \, dt \, .$$
+
+Substituting Newtonian momentum $\mathbf{p}_i = m_i\dot{\mathbf{r}}_i$, the integrand becomes $m_i \dot{\mathbf{r}}_i \cdot \delta\dot{\mathbf{r}}_i$.
+By the standard calculus identity for variations, $v \cdot \delta v = \frac{1}{2} \delta(v^2)$, this rewrites exactly as
+
+$$\int \delta \left( \frac{1}{2} m_i \dot{\mathbf{r}}_i^2 \right) dt = \delta \int T \, dt \, .$$
+
+Grouping this emergent kinetic term with the potential energy $V$, the evolution of the system is governed by Hamilton's principle of stationary action,
+
+$$\delta \int _ {t_1} ^ {t_2} (T - V) \, dt = 0 \, .$$
+
+#+begin_quote
+"Your right is to action alone;
+Never to its fruits at any time."
+— Bhagavad Gita, 2.47 (trans. Winthrop Sargeant)
+#+end_quote
+
+* Euler-Lagrange Equations
+Applying the calculus of variations to the action integral with fixed endpoints yields the equations of motion in configuration space,
+
+$$\boxed{ \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{q} _ i} \right) - \frac{\partial L}{\partial q _ i} = 0 }.$$
+
+* The Legendre Transformation
+To transition from configuration to phase space, the Legendre transformation maps $f(x)$ to a dual function $g(u)$ by exchanging $x$ for its derivative:
+
+$$u \equiv \frac{df}{dx}$$
+
+Inverting this mapping yields the constraint $x(u)$, which is substituted to eliminate $x$ entirely:
+
+$$g(u) = u x(u) - f(x(u))$$
+
+Evaluating the total differential of $g = ux - f$ reveals why this works:
+
+$$dg = x \, du + u \, dx - df$$
+
+By definition, $df = u \, dx$.
+Substituting this perfectly cancels the $dx$ terms:
+
+$$dg = x \, du$$
+
+This proves $g$ is strictly a function of $u$ and yields the symmetric relation:
+
+$$x = \frac{dg}{du}$$
+
+* Hamiltonian Mechanics
+We apply the Legendre transformation to the Lagrangian $L(q, \dot{q}, t)$ to replace the generalized velocities $\dot{q} _ i$ with their conjugate momenta $p _ i$.
+The conjugate momentum is formally defined as
+
+$$p _ i = \frac{\partial L}{\partial \dot{q} _ i}.$$
+
+We construct the Hamiltonian $H(q, p, t)$ as the Legendre transform of $L$,
+
+$$H(q, p, t) = \sum _ i p _ i \dot{q} _ i - L(q, \dot{q}, t).$$
+
+Evaluating the total differential $dH$ yields
+
+$$dH = \sum _ i (\dot{q} _ i \, dp _ i + p _ i \, d\dot{q} _ i) - \left( \sum _ i \frac{\partial L}{\partial q _ i} \, dq _ i + \sum _ i \frac{\partial L}{\partial \dot{q} _ i} \, d\dot{q} _ i + \frac{\partial L}{\partial t} \, dt \right).$$
+
+Enforcing the momentum definition and the Euler-Lagrange relation $\dot{p} _ i = \frac{\partial L}{\partial q _ i}$, the terms proportional to $d\dot{q} _ i$ vanish identically, leaving
+
+$$dH = \sum _ i (\dot{q} _ i \, dp _ i - \dot{p} _ i \, dq _ i) - \frac{\partial L}{\partial t} \, dt.$$
+
+Equating this result with the formal multivariable expansion of $H(q, p, t)$ uniquely determines Hamilton's equations of motion,
+
+$$\boxed{ \dot{q} _ i = \frac{\partial H}{\partial p _ i}, \quad \dot{p} _ i = -\frac{\partial H}{\partial q _ i}, \quad \frac{\partial H}{\partial t} = -\frac{\partial L}{\partial t} }.$$
