@@ -1,0 +1,50 @@
+#+TITLE: Spin Coupling
+#+STARTUP: overview
+#+FILETAGS: :physics:quantum_mechanics:relativistic_qm:
+#+OPTIONS: ^:nil author:nil date:nil toc:nil num:nil
+
+* Relativistic Origins
+Intrinsic spin and its coupling to orbital motion emerge when reducing the Dirac equation to the non-relativistic regime.
+Expanding this Hamiltonian yields the spin-orbit interaction $H_{SO}$.
+Because an electron moving through a nuclear electric field experiences an effective magnetic field, its orbital and spin angular momenta couple via
+
+$$H_{SO} = \frac{1}{2m_e^2c^2} \frac{1}{r} \frac{dV}{dr} \mathbf{L} \cdot \mathbf{S} \, .$$
+
+* LS and jj Coupling
+In multielectron atoms, the total angular momentum depends on the competition between the electron-electron Coulomb repulsion $H_{ee}$ and the spin-orbit interaction $H_{SO}$,
+
+$$H_{ee} = \sum_{i < j} \frac{e^2}{4\pi\epsilon_0 r_{ij}}$$
+
+$$H_{SO} = \sum_i \frac{Ze^2}{8\pi\epsilon_0 m_e^2 c^2 r_i^3} \mathbf{l}_i \cdot \mathbf{s}_i \, .$$
+
+The dominant term is dictated by relativistic kinematics.
+The velocity of an inner-shell electron scales linearly with atomic number,
+
+$$v \approx Z \alpha c \, .$$
+
+Via the Lorentz transformation, this velocity through the nuclear electric field $\mathbf{E}$ generates an effective magnetic field in the electron's rest frame,
+
+$$\mathbf{B}_{eff} = -\frac{\mathbf{v} \times \mathbf{E}}{c^2} = \frac{Ze}{4\pi\epsilon_0 m_e c^2} \frac{\mathbf{L}}{r^3} \, .$$
+
+Because the expectation value of the inverse-cubed orbital radius scales as $\langle r^{-3} \rangle \propto Z^3$, the spin-orbit energy is violently amplified by $Z$,
+
+$$H_{SO} \propto \langle \mathbf{B}_{eff} \cdot \mathbf{S} \rangle \propto Z \langle r^{-3} \rangle \propto Z^4 \, .$$
+
+Conversely, the inter-electron Coulomb repulsion scales only with the inverse orbital radius, $\langle r^{-1} \rangle \propto Z$,
+
+$$H_{ee} \propto \left\langle \frac{1}{r_{ij}} \right\rangle \propto Z \, .$$
+
+Because $H_{SO}$ contains a $1/c^2$ relativistic penalty, its absolute magnitude is suppressed by the fine-structure constant squared, $\alpha^2 \approx 5 \times 10^{-5}$.
+At low $Z$, this penalty keeps the spin-orbit effect tiny, so $H_{ee} \gg H_{SO}$.
+Individual orbital and spin momenta sum independently before coupling, defining the LS-coupling regime,
+
+$$\mathbf{L} = \sum_i \mathbf{l}_i, \quad \mathbf{S} = \sum_i \mathbf{s}_i \implies \mathbf{J} = \mathbf{L} + \mathbf{S} \, .$$
+
+In heavy atoms, the $Z^4$ amplification overcomes the $\alpha^2$ suppression, causing $H_{SO}$ to dominate.
+Each electron's spin and orbit couple individually first,
+
+$$\mathbf{j}_i = \mathbf{l}_i + \mathbf{s}_i \, .$$
+
+The total atomic angular momentum is then the sum of these strongly-coupled states, defining the jj-coupling regime,
+
+$$\boxed{ \mathbf{J} = \sum_i \mathbf{j}_i } \, .$$
