@@ -1,0 +1,75 @@
+#+TITLE: Density Operator
+#+STARTUP: overview
+#+FILETAGS: :physics:quantum_mechanics:open_systems:
+#+OPTIONS: ^:nil author:nil date:nil toc:nil num:nil
+
+* Bipartite Systems and Global States
+Consider a composite quantum system in $\mathcal{H}_{AB} = \mathcal{H}_A \otimes \mathcal{H}_B$.
+For a pure state $|\psi\rangle_{AB}$,
+the global density matrix is
+
+$$\rho_{AB} = |\psi\rangle\langle\psi|_{AB} \, .$$
+
+A local observable $M_A$ implies the global measurement operator $M_A \otimes I_B$,
+which yields the expectation value
+
+$$\langle M_A \rangle = \, _{AB}\langle\psi | M_A \otimes I_B | \psi\rangle_{AB} = \text{Tr}_{AB}((M_A \otimes I_B)\rho_{AB}) \, .$$
+
+* The Partial Trace
+To extract a local description,
+trace out subsystem $B$.
+Using an orthonormal basis $\{|k\rangle_B\}$ of $\mathcal{H}_B$,
+the partial trace is
+
+$$\text{Tr}_B(\rho_{AB}) = \sum_k (I_A \otimes \langle k|_B) \rho_{AB} (I_A \otimes |k\rangle_B) \, .$$
+
+Expanding the global state in a joint basis to reveal the loss of coherence gives
+
+$$\rho_{AB} = \sum_{i,\mu,j,\nu} c_{i\mu} c_{j\nu}^* (|i\rangle\langle j|_A) \otimes (|\mu\rangle\langle\nu|_B) \, .$$
+
+Applying the trace evaluates the inner products on $B$ as
+
+$$\langle k | \mu \rangle \langle \nu | k \rangle = \delta_{k\mu} \delta_{\nu k} \, .$$
+
+For these terms to survive, $\mu = \nu = k$.
+Because the basis states are orthogonal,
+all off-diagonal cross-terms ($\mu \neq \nu$) vanish,
+and the operators of $B$ collapse into scalar weights.
+
+* The Density Operator
+The resulting marginal matrix is the reduced density operator
+
+$$\rho_A \equiv \text{Tr}_B(\rho_{AB}) \, .$$
+
+Writing the bipartite pure state in the diagonal basis of $A$,
+$|\psi\rangle_{AB} = \sum_{i,\mu} a_{i\mu} |i\rangle_A \otimes |\mu\rangle_B$,
+yields the explicit density matrix summation
+
+$$\rho_A = \sum_i p_i |i\rangle\langle i| \, .$$
+
+Because $M_A$ acts exclusively on $A$,
+it factors out of the partial trace.
+Local expectation values are determined entirely by $\rho_A$,
+
+$$\boxed{ \langle M_A \rangle = \text{Tr}_A(M_A \rho_A) } \, .$$
+
+* The Ensemble Interpretation
+By the no-signaling theorem,
+local measurements cannot distinguish entanglement from a classical mixture.
+Thus, $\rho_A$ takes a spectral decomposition representing a statistical ensemble,
+
+$$\rho_A = \sum_i p_i |\psi_i\rangle\langle\psi_i| \, ,$$
+
+where $p_i$ is the classical probability of occupying the pure state $|\psi_i\rangle$ ($\sum p_i = 1$).
+Applying $\rho_A$ to a basis state yields $\rho_A | \psi_k \rangle = p_k | \psi_k \rangle$,
+confirming the probabilities $p_i$ are exactly the eigenvalues of $\rho_A$.
+
+* State Purity
+The eigenvalue spectrum of $\rho_A$ dictates subsystem purity.
+A pure state has exactly one eigenvalue of $p_1 = 1$,
+leaving no classical uncertainty and ensuring $\text{Tr}(\rho_A^2) = 1$.
+A mixed state distributes probability across multiple non-negative eigenvalues,
+creating a statistical mixture where $\text{Tr}(\rho_A^2) < 1$.
+Consequently,
+a maximally entangled global state yields a maximally mixed local state ($\rho_A = \frac{1}{d}I$),
+reflecting total local randomization.
