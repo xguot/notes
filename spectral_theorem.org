@@ -1,0 +1,67 @@
+#+TITLE: Spectral Theorem
+#+STARTUP: overview
+#+FILETAGS: :math:linear_algebra:quantum_mechanics:
+#+OPTIONS: ^:nil author:nil date:nil toc:nil num:nil
+
+* The Spectral Theorem
+The Spectral Theorem dictates that any real symmetric or complex Hermitian matrix $S$ can be orthogonally diagonalized.
+The operator is completely defined by its spectrum of real eigenvalues $\lambda_i$ and orthonormal eigenvectors $q_i$,
+
+$$\boxed{S = Q \Lambda Q^\dagger}$$
+
+The columns of $Q$ form an eigenbasis for the space.
+The diagonal matrix $\Lambda$ contains the real eigenvalues.
+In quantum mechanics, this guarantees that physical observables (Hermitian operators) yield strictly real measurement outcomes.
+
+* Singular Value Decomposition (SVD)
+SVD generalizes the spectral theorem to any arbitrary $m \times n$ matrix $A$,
+
+$$\boxed{A = U \Sigma V^\dagger}$$
+
+The $m \times m$ unitary matrix $U$ contains left singular vectors.
+The $n \times n$ unitary matrix $V$ contains right singular vectors.
+The diagonal matrix $\Sigma$ contains non-negative real singular values $\sigma_i$.
+By constructing the symmetric matrix $A^\dagger A$, we map SVD directly back to the Spectral Theorem,
+
+$$A^\dagger A = (V \Sigma U^\dagger)(U \Sigma V^\dagger) = V \Sigma^2 V^\dagger \, .$$
+
+The right singular vectors $V$ are the exact eigenvectors of $A^\dagger A$.
+The singular values are the exact square roots of its eigenvalues, $\sigma_i = \sqrt{\lambda_i}$.
+
+* Difference Matrices and the Discrete Laplacian
+For a finite difference matrix $D$ approximating the first derivative $\frac{d}{dx}$,
+the matrix transpose $D^T$ acts as the negative adjoint derivative $-\frac{d}{dx}$.
+Their product forms the symmetric discrete Laplacian operator,
+
+$$D^T D \approx -\frac{d^2}{dx^2} \, .$$
+
+Computing the SVD of $D$ diagonalizes this Laplacian without requiring its explicit construction.
+The right singular vectors $v_i$ correspond exactly to pure discrete Fourier modes.
+Because the first derivative of a pure mode strictly forces a 90-degree phase shift (changing even parity to odd parity),
+the output cannot reside in the same geometric space as the input.
+The SVD perfectly captures this transformation by mapping the input to an entirely new, orthogonal output basis $u_i$,
+
+$$D v_i = \sigma_i u_i \, .$$
+
+This is the exact discrete equivalent of the continuous Fourier derivative $\frac{d}{dx} e^{ikx} = i k e^{ikx}$.
+The input mode $v_i$ acts as the pure wave.
+The transition to the orthogonal basis $u_i$ executes the 90-degree geometric rotation (the $i$).
+The singular value $\sigma_i$ represents the gradient magnitude (the $k$).
+Low-frequency smooth modes possess minimal gradients, yielding $\sigma_i \approx 0$.
+Highly oscillatory modes possess steep gradients, mapping aggressively to large $\sigma_i$.
+
+* Schmidt Decomposition (Quantum Bipartite States)
+Consider a pure bipartite quantum state expanded in arbitrary local bases,
+forming a complex coefficient matrix $a_{i\mu}$,
+
+$$|\psi\rangle_{AB} = \sum_{i,\mu} a_{i\mu} |i\rangle_A \otimes |\mu\rangle_B \, .$$
+
+Applying SVD to the coefficient matrix yields $a = U \Sigma V^\dagger$.
+Because $U$ and $V^\dagger$ are unitary, they execute valid local basis transformations on System A and System B.
+This diagonalizes the coefficient matrix, collapsing the state into the Schmidt decomposition,
+
+$$\boxed{|\psi\rangle_{AB} = \sum_i \sqrt{p_i} |i\rangle_A \otimes |i'\rangle_B}$$
+
+The singular values $\Sigma_{ii}$ act as the Schmidt coefficients $\sqrt{p_i}$.
+Because $a a^\dagger$ corresponds to the reduced density operator $\rho_A$,
+the squared singular values $\sigma_i^2$ are exactly the classical probabilities $p_i$ of the local subsystems.
